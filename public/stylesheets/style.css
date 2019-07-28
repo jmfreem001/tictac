@@ -1,0 +1,22 @@
+body {
+  display: grid;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  grid-template-areas:
+    "intro intro ."
+    "container container container";
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+.container{
+  grid: 'container';
+}
+.into{
+  grid-area: 'template':
+  
+}
