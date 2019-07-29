@@ -1,17 +1,25 @@
 extends layout
 
 block content
-  .intro
+  div.intro
     h1= title
     p Welcome to #{title}
-  .container
-    p X
-    p O
-    p O
-    p O
-    p X
-    p X
-    p X
-    p X
-    p O
+  div.board
+
+  .status
+    p#log NOTHING HERE FOR NOW JUST A PLACEHOLDER
+  .options
+    label(for="X") Who's playing 'X'?
+    input(type=text name="X" id="xName")
+    //- Select box for color of marker
+    //- Select for player or CPU
+    br
+    label(for="O") Who's playing 'O'?
+    input(type=text name="O" id="Oname")
+    //- Select box for color of marker
+    //- Select for player or CPU
+    br
+    button#new-game New Game
+
+
 

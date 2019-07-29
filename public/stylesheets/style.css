@@ -1,22 +1,44 @@
 body {
   display: grid;
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   grid-template-areas:
-    "intro intro ."
-    "container container container";
-  grid-template-columns: repeat(3, 1fr);
-
+    ". intro ." 
+    ". options options"
+    ". status status"
+    ". board board";
+  grid-template-columns: 1fr 1.5fr 1fr;
 }
 
 a {
   color: #00B7FF;
 }
 
-.container{
-  grid: 'container';
+.board{
+  grid-area: board;
+  border: 25px solid white;
+  display: grid;
+  width: 150px;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 20px;
 }
-.into{
-  grid-area: 'template':
-  
+.cell{
+  border: 1px solid black;
+  margin: 0px;
+  text-align: center;
+  padding: 10px;
+  height: 25px;
+
+}
+
+.intro{
+  grid-area: intro;
+  text-align: center;  
+  margin-bottom: 40px;
+}
+.status{
+  grid-area: status;
+}
+.options{
+  grid-area: options;
 }
