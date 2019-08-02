@@ -3,14 +3,73 @@ const board = ( () => {
     let array = [];
     let height = 3;
     let size = height * height;
-
-    const fillBlanks = () => {
-        for (let i=0; i< size; i++){
-            array.push('');
-        }
+    for (let i=0; i< size; i++){
+        array.push('');
     }
 
-    fillBlanks()
+    let width = height - 1;
+    let length = size -1;
+    const checkRows = (mark)=> {
+
+        for (let i = 0; i < size; i += height){
+            // check each row
+            row:
+            for(let j = 0; j < height; j++){
+                // for each cell in each row check if player mark is present
+                if (array[i + j] !== mark) {
+                    break row;
+                }
+                // if code reaches the end of the row then there was a match.
+                if (j === width){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    const checkColumns = (mark)=> {
+        for (let i = 0; i < height; i++){
+            // check each column
+            column:
+            for(let j=0; j < size; j += height){
+                // for each cell in each column check if player mark is present
+                if (array[i+j] !== mark) {
+                    break column;
+                }
+                // if code reaches the end of the column then there was a match.
+                if (j === (length - width)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    const checkDiagonals = (mark)=> {
+        // Check first diagonal
+        for (let i = 0; i < size; i += (height + 1)){
+            if (array[i] !== mark) {
+                break;
+            }
+            if (i === size - 1){
+                return true;
+            }
+        }
+        // check second diagonal
+        for (let i = width; i < size; i += width){
+            if (array[i] !== mark) {
+                break;
+            }
+            if (i === (length - width)){
+                return true;
+            }
+        }
+
+        return false;
+
+         
+    }
+
+
 
     const change = (id, move) => {
         //Add move board
@@ -18,17 +77,20 @@ const board = ( () => {
         console.log(`Board updated with ${move}`)
     }
     const clear = () => {
-        // Using the code breaks functionality of board. 
-        // array = [];
-        // fillBlanks()
-        // console.log('Clearing board');
-        console.log(array);
+        //Replace each 
+        for (let i=0; i< size; i++){
+            array.splice(i, 1, '');
+        }
+
     }
     return { 
         array,
         change,
         size,
-        clear 
+        clear,
+        checkRows,
+        checkDiagonals,
+        checkColumns 
     };
 })();
 
@@ -63,6 +125,7 @@ const controller = ( () => {
             return;
         }
         else if (hasWon(activePlayer)){
+            render()
             end(activePlayer, 'win');
             return
         }
@@ -122,18 +185,21 @@ const controller = ( () => {
 
     }
     const displayNewPlayer = (activePlayer) =>  {
-
         log.textContent = `It is your turn to move ${activePlayer.name}`
-  
+
         return;
     }
     
 
     const hasWon = (activePlayer) => {
         // Check board to see if there are three in a row.
-        // .log(textContent)
+        let mark = activePlayer.marker
+        if (board.checkColumns(mark) || board.checkRows(mark) || board.checkDiagonals(mark)){
+            return true; 
+        }else {
+            return false;
+        }
 
-        // return true; 
     };
 
     const end = (activePlayer, winStatus) => {
@@ -192,6 +258,6 @@ const createPlayer = (name, marker) => {
 const newButton = document.getElementById('new-game');
 newButton.addEventListener('click', controller.start);
 
-const name1 = document.getElementById('xName').value;
-console.log(name1);
+// const name1 = document.getElementById('xName').value;
+// console.log(name1);
 
