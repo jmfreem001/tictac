@@ -10,13 +10,30 @@ block content
     p#log 
 
   .options
+    p Select type of game
+    input(type="radio" name="versus" value="vCpu" id="vCpu")
+    label(for="vCpu") Single Player
+
+    input(type="radio" name="versus" value="PvP" id="PvP" checked)
+    label(for="PvP") Two Player
+    br
+    p Select board size
+    input(type="radio" name="bSize" value="3x3" id="3x3" checked)
+    label(for="3x3") 3x3
+    
+    input(type="radio" name="bSize" value="5x5" id="5x5")
+    label(for="5x5") 5x5
+    br
+
+    
+  .players
     label(for="X") Who's playing 'X'?
-    input(type=text name="X" id="xName")
+    input(type="text" name="X" id="xName")
     //- Select box for color of marker
     //- Select for player or CPU
     br
-    label(for="O") Who's playing 'O'?
-    input(type=text name="O" id="oName")
+    label(for="O" id="oNameLabel") Who's playing 'O'?
+    input(type="text"  name="O" id="oName")
     //- Select box for color of marker
     //- Select for player or CPU
     br

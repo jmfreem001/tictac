@@ -5,6 +5,7 @@ body {
   grid-template-areas:
     ". intro ." 
     ". options options"
+    ". players players"
     ". status status"
     ". board board";
   grid-template-columns: 1fr 1.5fr 1fr;
@@ -19,7 +20,7 @@ a {
   border: 25px solid white;
   display: grid;
   width: 150px;
-  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(3, 1fr); */
   padding-left: 20px;
 }
 .cell{
@@ -41,4 +42,8 @@ a {
 }
 .options{
   grid-area: options;
+  margin-bottom: 25px;
+}
+.players{
+  grid-area: players;
 }
