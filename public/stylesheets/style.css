@@ -6,9 +6,34 @@ body {
     ". intro ." 
     ". options options"
     ". players players"
+    ". button ."
     ". status status"
     ". board board";
   grid-template-columns: 1fr 1.5fr 1fr;
+  /* grid-template-areas:
+    ". intro intro ." 
+    "options options players button"
+    "options options players board"
+    ". status status board"
+    ". status status board";
+  grid-template-columns: 1fr .8fr 1fr 1fr; */
+
+
+  background-color: #0B0C10;
+  color: #C5C6C7;
+}
+.intro p{
+   font: 14px "Lucida Grande";
+    font-weight: bold;
+}
+h1{
+  color: #66FCF1;
+  font-family: 'Bangers', cursive;
+  font-size: 64px;
+}
+input {
+  margin-left: 15px;
+  margin-bottom: 15px;
 }
 
 a {
@@ -17,14 +42,16 @@ a {
 
 .board{
   grid-area: board;
-  border: 25px solid white;
+  border: 25px solid #0B0C10;
   display: grid;
   width: 150px;
-  /* grid-template-columns: repeat(3, 1fr); */
+  font-family: 'Indie Flower', cursive;
   padding-left: 20px;
+  font-weight: bold;
+  font-size: 23px;
 }
 .cell{
-  border: 1px solid black;
+  border: 1px solid #45A29E;
   margin: 0px;
   text-align: center;
   padding: 10px;
@@ -35,15 +62,21 @@ a {
 .intro{
   grid-area: intro;
   text-align: center;  
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .status{
   grid-area: status;
 }
 .options{
   grid-area: options;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+  font-family: 'Cantarell', sans-serif;
 }
 .players{
   grid-area: players;
+  font-family: 'Cantarell', sans-serif;
+}
+.button{
+  grid-area: button;
+  text-align: center;
 }

@@ -224,6 +224,7 @@ const controller = ( () => {
         let container = document.querySelector('.board');
         container.setAttribute('style', `grid-template-columns: repeat(${height}, 1fr);`)
 
+
         // Add Cells
         for (let i =0; i < board.array.length; i++){
             let content = board.array[i];
@@ -318,3 +319,5 @@ const controller = ( () => {
 // Add new game listener
 const newButton = document.getElementById('new-game');
 newButton.addEventListener('click', controller.start);
+
+// TODO, need to hide elements for players and options once a game has been selected and not change options unless game is over. Or change selections button is created. 
